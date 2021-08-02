@@ -50,3 +50,43 @@ ggplot(morley, aes(x = Expt, y = Speed)) + geom_boxplot(aes(group=Expt))
 head(morley)                    
 morley %>% group_by(Expt) %>% summarize(m.speed = mean(Speed))
 ggplot(stress_relief, aes(x = MeditationYN, y = BloodPressure)) + geom_boxplot(aes(group=MeditationYN))
+
+fosterflakes
+frostedflakes
+
+head(frostedflakes)
+
+
+t_obj <- t.test(frostedflakes$Lab, mu = 37)
+print(t_obj)
+
+d <- ggplot2(frostedflakes, aes(x = Lab))
+d + geom_histogram(binwidth = 1) +
+  geom_vline(xintercept = t_obj$conf.int[1], color = "red") +
+  geom_vline(xintercept = t_obj$conf.int[2], color = "red") +
+  geom_vline(xintercept = t_obj$null.value, color = "green")
+
+ggplot(frostedflakes, aes(sample = Lab)) + geom_qq()
+
+t_ind <- t.test(frostedflakes$Lab, frostedflakes$IA400, alternative="two.sided", var.equal=FALSE)
+print(t_ind)
+library(reshape2)
+ff <- melt(frostedflakes, id="X")
+
+ggplot(ff) + geom_boxplot(aes(x = variable, y = value)) +
+  xlab("Test Method") + ylab("Percentage of Sugar")
+
+
+scores <- read.csv("scores.csv")
+head(scores)
+
+t_dep <- t.test(scores$postest, scores$pretest, paired = TRUE)
+t_dep
+
+library(reshape2)
+ss <- melt(scores, measure.vars = c("pretest", "postest"))
+
+
+ggplot(ss) + geom_boxplot(aes(x = variable, y = value)) +
+  xlab("Test") + ylab("Score")
+

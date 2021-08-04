@@ -27,3 +27,18 @@ d <- ggplot(USArrests, aes(x = UrbanPop, y = Murder))
 d + geom_point() + geom_smooth(method=lm, se=FALSE)
 
 
+#negative correlation plot 
+
+d <- ggplot(mtcars, aes(x = disp, y = mpg))
+d + geom_point() + geom_smooth(method=lm, se=FALSE)
+
+
+cor.test(mtcars$hp, mtcars$cyl, method="pearson", use = "complete.obs")
+
+install.packages("PerformanceAnalytics")
+library("PerformanceAnalytics")
+
+mtcars_quant <- mtcars[, c(1,2,3,4,5,6,7)]
+
+#correlation of plot 
+chart.Correlation(mtcars_quant, histogram = FALSE, method = "pearson")

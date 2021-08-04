@@ -27,3 +27,11 @@ https://rpubs.com/programeralebrijes/796400
 Little correlation Sample Plot 
 https://rpubs.com/programeralebrijes/796415
 
+Negative correlation plot 
+https://rpubs.com/programeralebrijes/796419
+
+
+correlation plot for data frame mtcars_quant 
+
+https://rpubs.com/programeralebrijes/796437
+
